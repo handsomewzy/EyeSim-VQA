@@ -6,27 +6,11 @@ This repository contains the official implementation of **FCA2**:
 ---
 
 ## 🧠 Overview
-Modeling visual perception in a manner consistent
-with human subjective evaluation has become a central direction in both video quality assessment (VQA) and broader
-visual understanding tasks. While free-energy-guided self-repair
-mechanisms—reflecting human observational experience—have
-proven effective in image quality assessment, extending them
-to VQA remains non-trivial. In addition, biologically inspired
-paradigms such as holistic perception, local analysis, and gazedriven scanning have achieved notable success in high-level
-vision tasks, yet their potential within the VQA context remains
-largely underexplored. To address these issues, we propose
-EyeSimVQA, a novel VQA framework that incorporates freeenergy-based self-repair. It adopts a dual-branch architecture,
-with an aesthetic branch for global perceptual evaluation and a
-technical branch for fine-grained structural and semantic analysis. Each branch integrates specialized enhancement modules
-tailored to distinct visual inputs—resized full-frame images and
-patch-based fragments—to simulate adaptive repair behaviors.
-We also explore a principled strategy for incorporating highlevel visual features without disrupting the original backbone.
-In addition, we design a biologically inspired prediction head
-that models sweeping gaze dynamics to better fuse global and
-local representations for quality prediction. Experiments on five
-public VQA benchmarks demonstrate that EyeSimVQA achieves
-competitive or superior performance compared to state-of-theart methods, while offering improved interpretability through its
-biologically grounded design.
+
+Modeling visual perception in a manner consistent with human subjective evaluation has become a central direction in both video quality assessment (VQA) and broader visual understanding tasks. While free-energy-guided self-repair mechanisms—reflecting human observational experience—have proven effective in image quality assessment, extending them to VQA remains non-trivial. In addition, biologically inspired paradigms such as holistic perception, local analysis, and gaze-driven scanning have achieved notable success in high-level vision tasks, yet their potential within the VQA context remains largely underexplored.
+To address these issues, we propose EyeSimVQA, a novel VQA framework that incorporates free-energy-based self-repair. It adopts a dual-branch architecture, with an aesthetic branch for global perceptual evaluation and a technical branch for fine-grained structural and semantic analysis. Each branch integrates specialized enhancement modules tailored to distinct visual inputs—resized full-frame images and patch-based fragments—to simulate adaptive repair behaviors. We also explore a principled strategy for incorporating high-level visual features without disrupting the original backbone. In addition, we design a biologically inspired prediction head that models sweeping gaze dynamics to better fuse global and local representations for quality prediction.
+Experiments on five public VQA benchmarks demonstrate that EyeSimVQA achieves competitive or superior performance compared to state-of-the-art methods, while offering improved interpretability through its biologically grounded design.
+
 ---
 
 ## 🧱 Network Architecture  
@@ -48,30 +32,29 @@ Install the required dependencies from `requirements.txt`:
 pip install -r requirements.txt
 ```
 
-
+Our implementation builds upon the DOVER and BasicVSR frameworks. Please refer to their official repositories for detailed environment configuration and installation guidelines.
 
 
 ### 📷 Train the model
 Run the scripts:
 
 ```bash
-python basicsr/train.py -opt script/your.yml
+python transfer_learning.py -opt script/your.yml -t val-livevqc
 ```
 
-A variety of YAML configuration files are provided under the `script/` directory, offering extensive options for hyperparameter tuning, model selection, dataset paths, and pretrained checkpoint locations. Before running the test script, please make sure to correctly set the **dataset directory**, **pretrained model paths**, and **target model configuration** in your chosen YAML file.
+> **The complete training pipeline is implemented in `transfer_learning.py`, where the YAML configuration file and the target dataset can be specified. Please refer to the script for detailed usage.
+> Model parameters and other configuration settings are defined in `Proposed.yml`.**
 
-The available models can be found under `basicsr/archs/`, which includes multiple SOTA architectures such as **BasicVSR**, **RealBasicVSR**, **FTVSR**, **CAVSR**, and **COMISR**.
-Our proposed **GAE module** is implemented in the `GAE` directory, while the overall **FCA2 architecture** and training/testing configurations are located in the `FCA2` directory.
+---
 
-Since the repository provides support for numerous models and benchmarking settings, some methods may require external dependencies that are not included in the default environment. If you encounter missing libraries when testing specific models, please refer to their **original official implementations** to install the required packages.
-
-
+> **More detailed implementation details, including the specific model architecture, can be found in `evaluator.py` under the DOVER directory. In particular, the `IntraRef` module is our newly designed model, developed by extending DOVER with visually enhanced representations.
+> For detailed network configurations and parameter settings, please refer to the corresponding definitions in this file.**
 
 ---
 
 ## 📌 Acknowledgements
 
-This work builds upon the foundations of **mmagic**, **CAVSR**, and **DIffV2IQA**. We sincerely thank the authors of these projects for their valuable contributions and open-source implementations.
+This work builds upon the foundations of **Dover**, **BasicVSR** and  **RealBasicVSR**. We sincerely thank the authors of these projects for their valuable contributions and open-source implementations.
 
 ---
 
