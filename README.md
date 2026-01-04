@@ -1,5 +1,5 @@
 # EyeSimVQA （TCSVT2026） 
-This repository contains the official implementation of **FCA2**:  
+This repository contains the official implementation of **EyeSimVQA**:  
 **EyeSim-VQA: A Free-Energy-Guided Eye Simulation Framework for Video Quality Assessment**  
 **Authors**: Zhaoyang Wang,  Wen Lu, Jie Li, Lihuo He, Maoguo Gong, Xinbo Gao
 
