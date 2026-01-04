@@ -1,3 +1,22 @@
+Metadata-Version: 2.1
+Name: dover
+Version: 1.0.0
+Summary: Disentangled Video Quality Evaluator
+Home-page: https://github.com/twowu/dover
+Author: Teo (Timothy) Wu Hao Ning
+Author-email: realtimothyhwu@gmail.com
+License: MIT License
+Keywords: computer vision,video quality assessment
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
 # DOVER
 
 Official Code for [ICCV2023] Paper *"Exploring Video Quality Assessment on User Generated Contents from Aesthetic and Technical Perspectives"*. 
@@ -296,86 +315,5 @@ Should you find our work interesting and would like to cite it, please feel free
   url = {http://github.com/timothyhtimothy/fast-vqa}
 }
 ```
-val-ytugc
-CUDA_VISIBLE_DEVICES=3 python transfer_learning.py -t val-livevqc
-CUDA_VISIBLE_DEVICES=5 python transfer_learning.py -t val-kv1k
-CUDA_VISIBLE_DEVICES=1 python transfer_learning.py -t val-ltrian
 
-当然可以！😎 下面是最常用、最实用的 **`tmux` 指令速查表**，非常适合日常训练模型、远程开发、挂后台任务等操作 👇
 
----
-
-## ✅ **基本启动与会话管理**
-
-| 指令 | 作用 |
-|------|------|
-| `tmux` | 创建一个新会话（默认名） |
-| `tmux new -s mysession` | 创建并命名会话 |
-| `tmux ls` | 列出当前所有 tmux 会话 |
-| `tmux attach -t mysession` | 重新连接某个会话 |
-| `tmux kill-session -t mysession` | 关闭指定会话 |
-| `tmux kill-server` | 关闭所有会话 |
-
----
-
-## ✅ **分屏操作（在 tmux 中）**
-
-默认前缀键是 `Ctrl + b`，以下操作都要先按它，然后再按下面的键：
-
-| 操作 | 快捷键 |
-|------|--------|
-| **横向分屏** | `Ctrl + b` 然后按 `%` |
-| **纵向分屏** | `Ctrl + b` 然后按 `"` |
-| **切换屏幕** | `Ctrl + b` 然后按方向键（←↑↓→） |
-| **关闭当前子屏幕** | `Ctrl + b` 然后按 `x`（确认 y） |
-| **调整分屏大小** | `Ctrl + b` 然后按 `Ctrl + 方向键` |
-| **交换屏幕位置** | `Ctrl + b` 然后按 `o` |
-
----
-
-## ✅ **窗口操作（多个 tab）**
-
-| 操作 | 快捷键 |
-|------|--------|
-| 创建新窗口 | `Ctrl + b` 然后按 `c` |
-| 切换窗口 | `Ctrl + b` 然后按 `n`（下一个），`p`（上一个） |
-| 指定窗口编号切换 | `Ctrl + b` 然后按数字 `0~9` |
-| 重命名窗口 | `Ctrl + b` 然后按 `,` |
-| 关闭窗口 | `exit` 或 `Ctrl + d` |
-
----
-
-## ✅ **会话 detach / 恢复**
-
-| 操作 | 快捷键 |
-|------|--------|
-| **挂起当前会话（detach）** | `Ctrl + b` 然后按 `d` |
-| **恢复会话** | `tmux attach -t mysession` |
-
----
-
-## ✅ **其他实用技巧**
-
-| 功能 | 命令 |
-|------|------|
-| 查看快捷键帮助 | `Ctrl + b` 然后按 `?` |
-| 复制模式（可以滚动） | `Ctrl + b` 然后按 `[`，再用 ↑↓ 滚动，按 `q` 退出 |
-| 分屏同步输入 | `Ctrl + b` 然后输入 `:setw synchronize-panes on` |
-| 取消同步 | `:setw synchronize-panes off` |
-
----
-
-## 🚀 超实用组合推荐
-
-```bash
-# 创建会话并立即进入
-tmux new -s train
-
-# 后台运行脚本并保持日志
-python -u train.py > log.txt 2>&1
-# 然后按 Ctrl + b 再按 d，退出 tmux 保持运行
-```
-
----
-
-需要我帮你写一个 `.tmux.conf` 方便快捷键设置和美化主题吗？或者你想让我配个训练脚本自动 tmux 启动器？✨
